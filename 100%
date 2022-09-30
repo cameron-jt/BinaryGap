@@ -1,0 +1,33 @@
+def solution(N):
+    b1 = []
+    one_ind = []
+    i = 0
+    diff = []
+    x = 1
+    y = 0
+    while N > 0:
+        remainder = N % 2
+        b1.append(remainder)
+        N = N//2
+    b1.reverse()
+ 
+    
+    #return index where 1 is present
+    while (i < len(b1)):
+        if b1[i] == 1:
+            one_ind.append(i)
+            i = i + 1
+        else:
+            i = i + 1
+    
+    #return difference between index
+    if len(one_ind) == 1:
+        return 0
+    else:
+        while x < len(one_ind):
+            d = one_ind[x] - one_ind[y] - 1
+            diff.append(d)
+            x = x+1
+            y = y+1
+    
+    return max(diff)
